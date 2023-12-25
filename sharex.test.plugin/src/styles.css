@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
