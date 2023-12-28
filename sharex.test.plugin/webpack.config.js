@@ -15,7 +15,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'postcss-loader', // Add this line
+                    'postcss-loader',
                 ],
             },
         ],
