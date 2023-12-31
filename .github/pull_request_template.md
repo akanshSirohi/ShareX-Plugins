@@ -1,7 +1,6 @@
 ---
 name: Pull Request
 about: Create a pull request to contribute
-assignees: @me
 ---
 
 <!--
@@ -16,7 +15,7 @@ We employ the following branching strategy to simplify the development process a
 
 <!--
 Thanks for submitting a pull request! Please provide enough information so that others can review your pull request.
--->s
+-->
 
 **What kind of change does this PR introduce?**
 
