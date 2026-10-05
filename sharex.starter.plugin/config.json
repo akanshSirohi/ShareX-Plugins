@@ -1,0 +1,8 @@
+{
+  "name": "Starter Plugin",
+  "package": "sharex.starter.plugin",
+  "description": "A static Next.js starter with live ShareX messaging and plugin storage.",
+  "author": "ShareX contributors",
+  "version": "1.0.0",
+  "versionCode": 1
+}
