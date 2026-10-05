@@ -11,7 +11,6 @@ export default (phase) => {
     ...(development ? {} : { output: 'export', basePath: `/SharexApp/${plugin.package.replaceAll('.', '-')}` }),
     trailingSlash: true,
     images: { unoptimized: true },
-    transpilePackages: ['sharex-sdk'],
-    experimental: { externalDir: true }
+    transpilePackages: ['sharex-sdk']
   };
 };
