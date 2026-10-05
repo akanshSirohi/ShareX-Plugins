@@ -4,7 +4,7 @@ Repository for [ShareX](https://github.com/akanshSirohi/ShareX) plugins (beta)
 
 ## Next.js starter
 
-Use [sharex.starter.plugin](sharex.starter.plugin/README.md) to develop plugins on your computer with live ShareX messaging and storage. Enable plugin development in the app, copy the connection, and paste it into the starter. `npm run package` creates a static ZIP that can be installed from the app's Plugins screen.
+Use [sharex.starter.plugin](sharex.starter.plugin/README.md) to develop plugins on your computer with live ShareX messaging and storage. Initialize the hosted SDK in development mode, then enter the connection copied from ShareX Settings in the SDK's draggable bubble. `npm run package` creates a static ZIP that can be installed from the app's Plugins screen.
 
 ## Set up your computer and phone
 
@@ -19,12 +19,12 @@ npm run dev
 
 Keep the terminal running. Open the address printed by Next.js, normally `http://localhost:3000`. If that port is occupied, use the actual port printed in the terminal for the steps below.
 
-The starter uses the published `sharex-sdk` npm package, pinned to `1.1.0`. New plugins should use the npm package too; no local SDK checkout is required. Commit dependency changes with the regenerated lockfile.
+Production builds use the published `sharex-sdk` npm package at `1.2.1`. The starter's dev server uses the sibling `SharexSDK` source checkout when available, so you can review SDK changes before publication. New plugins should use the npm package; do not add a local SDK dependency to plugin metadata.
 
 1. Open ShareX on your phone and start sharing.
 2. Open **Settings**, find the **Plugins** section, and enable **Plugin development**. Its switch and Share button sit in the row below the description. Wait for sharing to restart.
 3. Tap the **Share** button beside the switch, then choose **Copy connection** in the dialog. Transfer the complete connection privately to your computer, including its URL fragment containing the development key.
-4. Paste it into the starter's **Development connection** field and click **Connect**.
+4. Open the draggable SDK bubble in the starter, paste the connection, and click **Connect**. The bubble shows connection state and reconnect status.
 5. Confirm the page reports **Connected to ShareX** and **Save note** becomes enabled after database initialization.
 
 Keep the development key out of source files, commits, screenshots, logs, and AI prompts. Disabling development or resetting the key revokes access; copy a new connection before pairing again. ShareX's WebSocket uses the HTTP port plus one: HTTP 6060 means WebSocket 6061.
@@ -51,12 +51,12 @@ Try these checks with the unchanged starter first to confirm your setup, then re
 
 | Check | Manual steps | Expected result |
 | --- | --- | --- |
-| Pairing | Pair the first browser with the copied connection. | Connected status appears; database controls enable after initialization. |
+| Pairing | Open the SDK bubble and connect the first browser with the copied connection. | Bubble reports connected; database controls enable after initialization. |
 | Messaging | Open a second browser or private window, load the same dev page, and pair with the same connection and plugin package. Send a unique message in each direction. | Each other browser receives the message. The starter reports zero recipients when there are no peers. |
 | Peer changes | Close the second browser, then reopen and pair it. | The connected-browser list updates when the peer leaves and returns. |
 | Persistence | Save a uniquely named note. Refresh and pair again if prompted. | The saved note reappears from the phone database. Message history is in-memory and may disappear on refresh. |
 | Shared storage | After the first browser saves a note, refresh and pair the second browser. | Both clients can read the note. The starter does not automatically refresh notes when another client writes. |
-| Live edits | Change a visible label or style and save. | The browser updates without installing a ZIP. Re-pair if a full reload clears the connection field. |
+| Live edits | Change a visible label or style and save. | The browser updates without installing a ZIP. If a full reload loses the session, open the bubble and reconnect with the current connection. |
 | Reconnect | Temporarily stop sharing or disconnect the network, then restore it. | The page shows connection loss and recovers. Test messaging and saving a new note again after recovery. |
 | Revocation | Disable development or reset its key. Re-enable and copy a fresh connection. | Existing access is revoked; the fresh connection restores pairing. |
 

@@ -9,9 +9,6 @@ const development = process.env.NODE_ENV === "development";
 export default function Starter() {
   const sdkRef = useRef(null);
   const databaseRef = useRef(null);
-  const connectionInputRef = useRef(null);
-  const [activeConnection, setActiveConnection] = useState("");
-  const [connectionAttempt, setConnectionAttempt] = useState(0);
   const [status, setStatus] = useState(
     development ? "Pair your phone" : "Connecting",
   );
@@ -24,7 +21,6 @@ export default function Starter() {
   const [note, setNote] = useState("My first saved note");
 
   useEffect(() => {
-    if (development && !activeConnection) return;
     let sdk;
     let disposed = false;
     const refreshUsers = () => sdk.getAllUsers(setUsers);
@@ -36,14 +32,7 @@ export default function Starter() {
       sdk = new SharexSDK({
         public_data: { name: `Browser ${Math.floor(Math.random() * 1000)}` },
         preserve_session_id: true,
-        ...(development
-          ? {
-              development: {
-                server_url: activeConnection,
-                package_name: plugin.package,
-              },
-            }
-          : {}),
+        ...(development ? { development: { package_name: plugin.package } } : {}),
       });
       sdkRef.current = sdk;
       setStatus("Connecting");
@@ -89,18 +78,7 @@ export default function Starter() {
       if (sdkRef.current === sdk) sdkRef.current = null;
       databaseRef.current = null;
     };
-  }, [activeConnection, connectionAttempt]);
-
-  const pair = (event) => {
-    event.preventDefault();
-    sdkRef.current?.disconnect();
-    setConnected(false);
-    setDatabaseReady(false);
-    const connection = connectionInputRef.current?.value.trim() || "";
-    if (!connection) return;
-    setActiveConnection(connection);
-    setConnectionAttempt((attempt) => attempt + 1);
-  };
+  }, []);
 
   const send = (event) => {
     event.preventDefault();
@@ -158,34 +136,6 @@ export default function Starter() {
         <span className={connected ? "dot online" : "dot"} />
         {status}
       </div>
-      {development && (
-        <section className="pair">
-          <h2>Connect your phone</h2>
-          <p>
-            Start sharing in ShareX. Enable Plugin development in Settings, then
-            copy the development connection.
-          </p>
-          <form onSubmit={pair}>
-            <label htmlFor="connection">Development connection</label>
-            <div className="form-row">
-              <input
-                ref={connectionInputRef}
-                id="connection"
-                type="password"
-                autoComplete="off"
-                spellCheck={false}
-                placeholder="Paste connection from ShareX"
-                required
-              />
-              <button type="submit">Connect</button>
-            </div>
-          </form>
-          <p className="hint">
-            Use the same Wi-Fi or hotspot. Open this page in another browser to
-            test messages. Edits refresh automatically.
-          </p>
-        </section>
-      )}
       <div className="grid">
         <section>
           <p className="eyebrow">01 / WEBSOCKET</p>

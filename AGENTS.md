@@ -4,11 +4,14 @@ This repository contains plugins and the root `apps.json` catalog consumed by th
 
 ## Development
 
-- Use Node.js 22 or newer and run `npm ci` in the plugin folder. Plugins, including the starter, must use the published `sharex-sdk` package from npm (currently pinned to `1.1.0` in the starter). Do not commit local `file:` dependencies or require a sibling SDK checkout. When upgrading the SDK, verify the published version, update the dependency and lockfile, and rebuild/test the plugin.
-- Run `npm run dev` in the plugin folder. Enable Plugin development in ShareX and pair using the copied connection. Never commit development keys or embed them in production assets.
+- Use Node.js 22 or newer and run `npm ci` in the plugin folder. Plugins, including the starter, must use the published `sharex-sdk` package from npm. Do not commit local `file:` dependencies or require a sibling SDK checkout. The starter uses hosted SDK version `1.2.1`.
+- Run `npm run dev` in the plugin folder. Enable Plugin development in ShareX. Open the SDK's draggable bubble, paste the connection copied from ShareX Settings, and use its status display to diagnose pairing. Never commit development keys or embed them in production assets.
 - Installed plugins require their own named ShareX permission for messaging and plugin storage. This grant must remain separate from browser approval for the shared file manager. Keep the direct-open permission page and the in-app request description accurate when changing plugin access.
 - To create a plugin, copy the starter and update `config.json`, npm metadata, and UI. Use a unique dot-separated package containing letters, digits, and underscores; `dev.` is reserved.
 - Keep plugins statically exportable: no server actions, API routes, or server-only runtime dependencies. Initialize the SDK in browser code, disconnect during React effect cleanup, and wait for successful database initialization before database operations.
+- For development, initialize the SDK with `development: { package_name: '<plugin.package>' }`. The SDK bubble collects the connection string without storing it in plugin source. If code supplies `development.server_url`, the bubble must show connection status only and identify that the string came from code. Do not recreate connection UI in each plugin unless a specific plugin workflow needs it.
+- The starter's Next.js dev server aliases `sharex-sdk` to `../../SharexSDK/src/SharexSDK.js` when the sibling checkout exists. Production builds continue to use the published npm package. Preserve this split so SDK UI can be reviewed before release without adding a local SDK dependency to plugin metadata. Next dev must allow both `localhost` and `127.0.0.1` HMR origins to keep the local page connected to Fast Refresh.
+- Manual connection steps: start ShareX sharing; enable **Plugin development** in Settings; use the adjacent Share button and **Copy connection**; open the plugin's local dev URL; open the SDK bubble; paste and connect. Check bubble status, browser Console and WebSocket entries, and the dev-server terminal when debugging. Remove keys and private payloads before sharing logs with AI tools.
 
 ## Packaging and proper listing
 
