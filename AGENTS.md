@@ -6,6 +6,7 @@ This repository contains plugins and the root `apps.json` catalog consumed by th
 
 - Use Node.js 22 or newer and run `npm ci` in the plugin folder. Plugins, including the starter, must use the published `sharex-sdk` package from npm (currently pinned to `1.1.0` in the starter). Do not commit local `file:` dependencies or require a sibling SDK checkout. When upgrading the SDK, verify the published version, update the dependency and lockfile, and rebuild/test the plugin.
 - Run `npm run dev` in the plugin folder. Enable Plugin development in ShareX and pair using the copied connection. Never commit development keys or embed them in production assets.
+- Installed plugins require their own named ShareX permission for messaging and plugin storage. This grant must remain separate from browser approval for the shared file manager. Keep the direct-open permission page and the in-app request description accurate when changing plugin access.
 - To create a plugin, copy the starter and update `config.json`, npm metadata, and UI. Use a unique dot-separated package containing letters, digits, and underscores; `dev.` is reserved.
 - Keep plugins statically exportable: no server actions, API routes, or server-only runtime dependencies. Initialize the SDK in browser code, disconnect during React effect cleanup, and wait for successful database initialization before database operations.
 
