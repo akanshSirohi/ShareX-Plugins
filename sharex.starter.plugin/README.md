@@ -4,11 +4,9 @@ Develop on your computer while ShareX on your phone provides WebSocket messaging
 
 ## Start development
 
-Use Node.js 22 or newer. Keep `SharexSDK` and `ShareX-Plugins` next to each other. This starter uses the local SDK through `file:../../SharexSDK`, so SDK changes are available during development without publishing npm packages.
+Use Node.js 22 or newer. This starter uses the published [sharex-sdk npm package](https://www.npmjs.com/package/sharex-sdk), pinned to version `1.1.0`. Install dependencies directly in the starter folder; no SDK checkout is required.
 
 ```powershell
-cd D:\Projects\SharexSDK
-npm ci
 cd D:\Projects\ShareX-Plugins\sharex.starter.plugin
 npm ci
 npm run dev
@@ -47,4 +45,4 @@ On the phone, open **Plugins > Install from ZIP**, select the ZIP, and confirm o
 
 Keep the plugin static: no server actions, API routes, or server-only runtime dependencies. See the [Next.js static export guide](https://nextjs.org/docs/app/guides/static-exports).
 
-The npm version of `sharex-sdk` is currently older than this workflow. Once the updated SDK is published, replace the local dependency with `sharex-sdk` version 1.1.0 or newer and regenerate the lockfile.
+Use the published `sharex-sdk` npm package for new plugins too. When upgrading, update the pinned version and regenerate `package-lock.json`, then rebuild the plugin ZIP and run the packaging test.

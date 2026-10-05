@@ -13,8 +13,12 @@
     "next": "16.3.8",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "sharex-sdk": "file:../../SharexSDK"
+    "sharex-sdk": "1.1.0"
   },
-  "devDependencies": { "jszip": "3.10.1" },
-  "engines": { "node": ">=22" }
+  "devDependencies": {
+    "jszip": "3.10.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }

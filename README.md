@@ -8,6 +8,8 @@ Use [sharex.starter.plugin](sharex.starter.plugin/README.md) to develop plugins 
 
 ## Project Setup
 
+The root [apps.json](apps.json) lists plugins. Keep entries synchronized with plugin metadata and commit each distributable ZIP under `<package>/sharex_dist/<package>.zip`. See [AGENTS.md](AGENTS.md) for development and listing guidance.
+
 - Clone the project
 
 ```bash
