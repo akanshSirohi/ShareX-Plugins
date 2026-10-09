@@ -9,7 +9,7 @@
   },
   {
     "name": "Tic Tac Toe",
-    "package": "sharex.tictactoe",
+    "package": "sharex.tictactoe.plugin",
     "description": "Play live multiplayer tic tac toe with friends through ShareX.",
     "author": "ShareX contributors",
     "version": "1.0.1",
@@ -17,7 +17,7 @@
   },
   {
     "name": "Bingo",
-    "package": "sharex.bingo",
+    "package": "sharex.bingo.plugin",
     "description": "Play live two-player Bingo through ShareX.",
     "author": "ShareX contributors",
     "version": "1.0.1",

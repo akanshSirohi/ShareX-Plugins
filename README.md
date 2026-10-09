@@ -35,7 +35,7 @@ To open the dev page on the phone, use `http://YOUR_COMPUTER_LAN_IP:3000`, with 
 
 Open this repository in your editor or coding assistant. Have it read [AGENTS.md](AGENTS.md) and the [starter README](sharex.starter.plugin/README.md) first. Describe the feature, expected user behavior, and acceptance checks. You handle phone settings and pairing; the assistant can edit code, run terminal checks, and help interpret redacted errors.
 
-For a new plugin, copy the starter into a new folder while preserving the original. Update `config.json` and npm metadata first. Choose a unique dot-separated package containing letters, digits, and underscores; `dev.` is reserved. The repository folder must exactly match the package: for `sharex.bingo`, use folder `sharex.bingo`. The package determines the catalog download path, database namespace, installed route, static asset prefix, and ZIP filename.
+For a new plugin, copy the starter into a new folder while preserving the original. Update `config.json` and npm metadata first. Choose a unique dot-separated package containing letters, digits, and underscores; `dev.` is reserved. Three-part names are valid: for package `sharex.bingo.plugin`, use folder `sharex.bingo.plugin`. The repository folder must exactly match the full package. The package determines the catalog download path, database namespace, installed route, static asset prefix, and ZIP filename.
 
 Example prompt:
 

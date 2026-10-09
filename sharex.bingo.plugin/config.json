@@ -1,6 +1,6 @@
 {
   "name": "Bingo",
-  "package": "sharex.bingo",
+  "package": "sharex.bingo.plugin",
   "description": "Play live two-player Bingo through ShareX.",
   "author": "ShareX contributors",
   "version": "1.0.1",

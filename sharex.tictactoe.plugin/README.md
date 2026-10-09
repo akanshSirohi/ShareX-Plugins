@@ -15,7 +15,7 @@ On your phone, start ShareX sharing and enable **Plugin development** in Setting
 
 Once both browsers show **Connected to ShareX**, create a room in one and enter its code in the other. The host is X and goes first. The host validates moves and sends the current board to the guest. Rooms are private to browsers connected to the same ShareX instance and plugin namespace.
 
-The SDK uses the ShareX WebSocket relay for direct browser-to-browser messages. It does not need an additional server or database. Development uses `dev.sharex.tictactoe`, separate from an installed plugin.
+The SDK uses the ShareX WebSocket relay for direct browser-to-browser messages. It does not need an additional server or database. Development uses `dev.sharex.tictactoe.plugin`, separate from an installed plugin.
 
 ## Installable build
 
@@ -26,7 +26,7 @@ npm run package
 npm test
 ```
 
-The package command creates `sharex_dist/sharex.tictactoe.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.1 ZIP is included. The repository folder is `sharex.tictactoe` to match the catalog's download path. Install through the catalog or **Plugins > Install from ZIP** in ShareX and authorize the Tic Tac Toe plugin in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.
+The package command creates `sharex_dist/sharex.tictactoe.plugin.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.1 ZIP is included. The package ID and repository folder are both `sharex.tictactoe.plugin` to match the catalog's download path. Install through the catalog or **Plugins > Install from ZIP** in ShareX and authorize the Tic Tac Toe plugin in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.
 
 The plugin is listed in the repository catalog. Keep `config.json` and `apps.json` synchronized when releasing updates.
 
