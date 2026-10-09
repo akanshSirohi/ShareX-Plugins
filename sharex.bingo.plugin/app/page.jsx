@@ -367,6 +367,12 @@ export default function Bingo() {
   const isMyTurn = turnForSequence(room.sequence) === role;
   const canPickNumber = canCall(room, role);
   const resultText = resultLabel(room.result, role);
+  const resultTone = room.result
+    ? room.result.winner === "draw" ? "draw" : room.result.winner === (role === "host" ? "X" : "O") ? "win" : "loss"
+    : isMyBingo ? "win" : "muted";
+  const resultSymbol = room.result
+    ? resultTone === "draw" ? "=" : resultTone === "win" ? "✓" : "—"
+    : isMyBingo ? "✓" : "·";
 
   return (
     <main className="page-shell">
@@ -420,18 +426,11 @@ export default function Bingo() {
           ) : (
             <div className="match-area">
               <div className="match-meta">
-                <div className="players">
-                  <div className={`player ${turnForSequence(room.sequence) === "host" ? "active-player" : ""}`}>
-                    <span className="player-token token-x">X</span>
-                    <span><strong>{role === "host" ? "You" : "Host"}</strong><small>Player one</small></span>
-                  </div>
-                  <span className="versus">VS</span>
-                  <div className={`player ${turnForSequence(room.sequence) === "guest" ? "active-player" : ""}`}>
-                    <span className="player-token token-o">O</span>
-                    <span><strong>{role === "guest" ? "You" : room.peerOnline ? "Opponent" : "Waiting"}</strong><small>Player two</small></span>
-                  </div>
+                <div className="card-owner">
+                  <strong>Your Bingo card</strong>
+                  <small>Room {room.code} · {role === "host" ? "Hosting" : "Joined"}</small>
                 </div>
-                <div className="room-badge"><span className={`connection-dot ${room.peerOnline ? "is-online" : ""}`} />{room.peerOnline ? room.active ? "LIVE GAME" : "CONNECTED" : "WAITING FOR PLAYER"}</div>
+                <div className="room-badge"><span className={`connection-dot ${room.peerOnline ? "is-online" : ""}`} />{room.result ? "GAME FINISHED" : room.peerOnline ? room.active ? "LIVE GAME" : "CONNECTED" : "WAITING FOR PLAYER"}</div>
               </div>
 
               {role === "host" && !room.peerOnline && (
@@ -444,8 +443,8 @@ export default function Bingo() {
               <div className="board-wrap">
                 <div className="board-heading">
                   <div className="turn-label" aria-live="polite">
-                    <span className={`turn-token ${room.result ? room.result.winner === "draw" ? "token-draw" : room.result.winner === (role === "host" ? "X" : "O") ? "token-x" : "token-o" : isMyBingo ? "token-x" : "token-muted"}`}>
-                      {room.result ? room.result.winner === "draw" ? "=" : room.result.winner : isMyBingo ? "✓" : "·"}
+                    <span className={`turn-token token-${resultTone}`} aria-hidden="true">
+                      {resultSymbol}
                     </span>
                     <span>{room.result ? resultText : !room.peerOnline ? room.active ? "Opponent disconnected · waiting to reconnect." : "Waiting for your opponent to join." : isMyBingo ? "BINGO! Waiting for the call to settle…" : room.pending ? room.pendingNumber ? `Calling ${room.pendingNumber}…` : "Checking both cards…" : isMyTurn ? "Your turn · tap a number to call it." : "Opponent’s turn · waiting for a number."}</span>
                   </div>
