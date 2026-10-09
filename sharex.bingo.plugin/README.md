@@ -15,7 +15,7 @@ npm run dev
 
 On your phone, start ShareX sharing and enable **Plugin development** in Settings. Use the adjacent Share button to copy the connection. Open the local URL printed by Next.js, open the SDK's ShareX bubble, paste the connection, and connect. Repeat in a second browser or private window with the same package, create a room on one player, then join with the code on the other. Keep the connection key out of source files and commits.
 
-The ShareX SDK relays game messages through its WebSocket connection. The private card layout stays on each player's browser; messages contain only the shared calls and whether a player has completed BINGO. The host validates turn order and call sequence, and waits for the other player's result on each call before settling a win or draw. Development uses `dev.sharex.bingo`, separate from an installed plugin.
+The ShareX SDK relays game messages through its WebSocket connection. The private card layout stays on each player's browser; messages contain only the shared calls and whether a player has completed BINGO. The host validates turn order and call sequence, and waits for the other player's result on each call before settling a win or draw. Development uses `dev.sharex.bingo.plugin`, separate from an installed plugin.
 
 After updating, refresh both players and create a fresh room so both use the revised rules and protocol.
 
@@ -30,4 +30,4 @@ npm run package
 npm test
 ```
 
-The package command creates `sharex_dist/sharex.bingo.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.0 ZIP is included and listed in the repository catalog. Install it through **Plugins > Install from ZIP** in ShareX, then authorize Bingo in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.
+The package command creates `sharex_dist/sharex.bingo.plugin.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.1 ZIP is included and listed in the repository catalog. The package ID and repository folder are both `sharex.bingo.plugin` to match the catalog's download path. Install through the catalog or **Plugins > Install from ZIP** in ShareX, then authorize Bingo in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.

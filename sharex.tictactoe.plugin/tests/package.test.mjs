@@ -3,6 +3,13 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import JSZip from 'jszip';
 
+test('catalog download path resolves to the packaged plugin ZIP', async () => {
+  const plugin = JSON.parse(await readFile(new URL('../config.json', import.meta.url), 'utf8'));
+  const download = new URL(`../../${plugin.package}/sharex_dist/${plugin.package}.zip`, import.meta.url);
+  const zip = await JSZip.loadAsync(await readFile(download));
+  assert.deepEqual(JSON.parse(await zip.file('config.json').async('string')), plugin);
+});
+
 test('installable static export contains metadata and serves assets under the plugin route', async () => {
   const plugin = JSON.parse(await readFile(new URL('../config.json', import.meta.url), 'utf8'));
   const zip = await JSZip.loadAsync(await readFile(new URL(`../sharex_dist/${plugin.package}.zip`, import.meta.url)));

@@ -2,6 +2,6 @@ node_modules/
 .next/
 out/
 sharex_dist/*
-!sharex_dist/sharex.tictactoe.zip
+!sharex_dist/sharex.tictactoe.plugin.zip
 .env*
 !.env.example
