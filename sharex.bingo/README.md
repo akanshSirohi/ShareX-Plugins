@@ -30,4 +30,4 @@ npm run package
 npm test
 ```
 
-The package command creates `sharex_dist/sharex.bingo.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.0 ZIP is included and listed in the repository catalog. Install it through **Plugins > Install from ZIP** in ShareX, then authorize Bingo in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.
+The package command creates `sharex_dist/sharex.bingo.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.1 ZIP is included and listed in the repository catalog. The repository folder is `sharex.bingo` to match the catalog's download path. Install through the catalog or **Plugins > Install from ZIP** in ShareX, then authorize Bingo in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.

@@ -35,7 +35,7 @@ To open the dev page on the phone, use `http://YOUR_COMPUTER_LAN_IP:3000`, with 
 
 Open this repository in your editor or coding assistant. Have it read [AGENTS.md](AGENTS.md) and the [starter README](sharex.starter.plugin/README.md) first. Describe the feature, expected user behavior, and acceptance checks. You handle phone settings and pairing; the assistant can edit code, run terminal checks, and help interpret redacted errors.
 
-For a new plugin, copy the starter into a new folder while preserving the original. Update `config.json` and npm metadata first. Choose a unique dot-separated package containing letters, digits, and underscores; `dev.` is reserved. The package determines the database namespace, installed route, static asset prefix, and ZIP filename.
+For a new plugin, copy the starter into a new folder while preserving the original. Update `config.json` and npm metadata first. Choose a unique dot-separated package containing letters, digits, and underscores; `dev.` is reserved. The repository folder must exactly match the package: for `sharex.bingo`, use folder `sharex.bingo`. The package determines the catalog download path, database namespace, installed route, static asset prefix, and ZIP filename.
 
 Example prompt:
 
@@ -106,8 +106,10 @@ The root [apps.json](apps.json) is the catalog consumed by the Android app. Befo
 
 1. Update `config.json` with name, package, description, author, version, and positive integer `versionCode`. Increment `versionCode` for releases.
 2. Keep the corresponding `apps.json` entry identical to the plugin metadata and package identifiers unique.
-3. Rebuild, test, and include `<package>/sharex_dist/<package>.zip`. The app downloads this exact repository path.
+3. Rebuild, test, and include `<package>/sharex_dist/<package>.zip`. The repository folder must equal the package exactly; the app downloads this exact path. Game plugin tests verify the catalog path as well as ZIP contents.
 4. Review `git status` and run `git diff --check`. Exclude `node_modules`, `.next`, unpacked `out`, and development keys. If a global ignore hides the ZIP, explicitly add that distributable using `git add -f`.
 5. Record automated results and manual device checks, including checks you could not perform.
+
+After pushing a game release branch, run `npm run check:download -- <branch>` from that game's folder. This verifies the GitHub response, ZIP integrity, and metadata using the catalog's actual download URL. After merge, run it with `master` and refresh the plugin catalog on the phone before retrying installation.
 
 When removing a plugin, remove both its folder and catalog entry. Preserve the starter as the development reference. See [AGENTS.md](AGENTS.md) for maintenance rules.

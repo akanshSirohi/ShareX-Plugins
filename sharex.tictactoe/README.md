@@ -26,7 +26,7 @@ npm run package
 npm test
 ```
 
-The package command creates `sharex_dist/sharex.tictactoe.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.0 ZIP is included. Install from **Plugins > Install from ZIP** in ShareX and authorize the Tic Tac Toe plugin in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.
+The package command creates `sharex_dist/sharex.tictactoe.zip`, containing `config.json`, `index.html`, and static assets at its root. The version 1.0.1 ZIP is included. The repository folder is `sharex.tictactoe` to match the catalog's download path. Install through the catalog or **Plugins > Install from ZIP** in ShareX and authorize the Tic Tac Toe plugin in the browser. Installed plugins automatically connect to the ShareX host serving them; no development connection is embedded.
 
 The plugin is listed in the repository catalog. Keep `config.json` and `apps.json` synchronized when releasing updates.
 
