@@ -93,16 +93,9 @@ h1 { margin: 0; font-size: clamp(38px, 5vw, 64px); line-height: .99; letter-spac
 
 .match-area { max-width: 510px; }
 .match-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -7px 0 21px; }
-.players { display: flex; align-items: center; gap: clamp(12px, 3vw, 27px); }
-.player { display: flex; align-items: center; gap: 9px; opacity: .57; transition: opacity .2s; }
-.active-player { opacity: 1; }
-.player-token { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 50%; background: #e7e8df; font-family: var(--mono); font-size: 13px; font-weight: 500; }
-.token-x { color: var(--orange); }
-.token-o { color: var(--blue); }
-.player strong, .player small { display: block; }
-.player strong { font-size: 10px; font-weight: 700; }
-.player small { margin-top: 2px; color: #9aa49b; font-family: var(--mono); font-size: 8px; }
-.versus { color: #a4ada5; font-family: var(--mono); font-size: 8px; }
+.card-owner { display: flex; flex-direction: column; gap: 4px; }
+.card-owner strong { font-size: 12px; font-weight: 700; }
+.card-owner small { color: #8a968d; font-family: var(--mono); font-size: 8px; letter-spacing: .04em; }
 .room-badge { display: flex; align-items: center; gap: 7px; color: #809087; font-family: var(--mono); font-size: 8px; letter-spacing: .1em; white-space: nowrap; }
 .invite-strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; padding: 11px 14px; border: 1px solid #dce1d9; border-radius: 6px; background: rgba(255,255,255,.4); }
 .invite-strip small { display: block; margin-bottom: 3px; font-size: 8px; }
@@ -114,6 +107,8 @@ h1 { margin: 0; font-size: clamp(38px, 5vw, 64px); line-height: .99; letter-spac
 .turn-label.finished { color: var(--ink); }
 .turn-token { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: #e8eae2; font-family: var(--mono); font-size: 11px; }
 .token-muted { color: #9ba69e; }
+.token-win { color: var(--green); }
+.token-loss { color: var(--muted); }
 .token-draw { color: var(--green); }
 .rematch-button { margin-left: auto; padding: 7px 10px; border: 0; border-radius: 4px; color: #fff; background: var(--green); font-size: 9px; font-weight: 700; cursor: pointer; }
 .rematch-button span { margin-left: 5px; }
