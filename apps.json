@@ -6,5 +6,21 @@
     "author": "ShareX contributors",
     "version": "1.0.0",
     "versionCode": 1
+  },
+  {
+    "name": "Tic Tac Toe",
+    "package": "sharex.tictactoe",
+    "description": "Play live multiplayer tic tac toe with friends through ShareX.",
+    "author": "ShareX contributors",
+    "version": "1.0.0",
+    "versionCode": 1
+  },
+  {
+    "name": "Bingo",
+    "package": "sharex.bingo",
+    "description": "Play live two-player Bingo through ShareX.",
+    "author": "ShareX contributors",
+    "version": "1.0.0",
+    "versionCode": 1
   }
 ]
