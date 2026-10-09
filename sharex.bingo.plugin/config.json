@@ -1,0 +1,8 @@
+{
+  "name": "Bingo",
+  "package": "sharex.bingo",
+  "description": "Play live two-player Bingo through ShareX.",
+  "author": "ShareX contributors",
+  "version": "1.0.0",
+  "versionCode": 1
+}
