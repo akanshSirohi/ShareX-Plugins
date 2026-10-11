@@ -20,13 +20,13 @@ The ZIP contains `index.html`, `assets/` and `config.json` at the archive root. 
 
 ## Local development
 
-Requires Node.js 22+. With internet access, run `npm ci` to install the **published npm package** `sharex-sdk@1.2.1`. `npm run dev` serves the static notebook at `http://localhost:3000`; `npm run package` rebuilds and packages it. `npm test` validates the produced installer. For SDK versions that support the built-in development bubble, start ShareX sharing, enable **Plugin development**, copy the connection in ShareX Settings, then paste it in the SDK bubble. On localhost, the plugin initializes with `{ development: { package_name: 'sharex.notes.plugin' } }` and automatically disconnects on page unload. Installed builds connect to their ShareX host without development options. The fallback SDK extracted from the uploaded starter is used only when `node_modules/sharex-sdk/dist/sharex-sdk.min.js` is unavailable at build time. It uses the same published ShareX SDK database API. Use the published package for the modern development connection bubble.
+Requires Node.js 22+. With internet access, run `npm ci` to install the **published npm package** `sharex-sdk@1.2.1`. `npm run dev` serves the static notebook at `http://localhost:3000`; `npm run package` rebuilds and packages it. For SDK versions that support the built-in development bubble, start ShareX sharing, enable **Plugin development**, copy the connection in ShareX Settings, then paste it in the SDK bubble. On localhost, the plugin initializes with `{ development: { package_name: 'sharex.notes.plugin' } }` and automatically disconnects on page unload. Installed builds connect to their ShareX host without development options. The fallback SDK extracted from the uploaded starter is used only when `node_modules/sharex-sdk/dist/sharex-sdk.min.js` is unavailable at build time. It uses the same published ShareX SDK database API. Use the published package for the modern development connection bubble.
 
 `npm run build` produces `out/`, and `npm run package` produces the ZIP at `sharex_dist/sharex.notes.plugin.zip`. `out/`, `node_modules/` are build artifacts and should not be committed. The installable ZIP should be committed when listed in a plugin catalog.
 
 ## Catalog
 
-The plugin is listed in root `apps.json`; `catalog-entry.json` mirrors its metadata. The repository folder and package are both `sharex.notes.plugin`. The downloadable path is exactly `sharex.notes.plugin/sharex_dist/sharex.notes.plugin.zip`. Run `npm run check:download -- <branch>` after pushing a release to verify the same GitHub download URL used by Android.
+The plugin is listed in root `apps.json`; `catalog-entry.json` mirrors its metadata. The repository folder and package are both `sharex.notes.plugin`. The downloadable path is exactly `sharex.notes.plugin/sharex_dist/sharex.notes.plugin.zip`.
 
 ## Data & security notes
 
@@ -35,8 +35,6 @@ Note content is stored in ShareX plugin database; an offline browser cache and p
 ### SDK storage compatibility
 
 The published SDK 1.2.1 rejects `uuid: false`, so Notes supplies its stable `_uuid` and omits that insert option. Android updates use colon-delimited string commands, which cannot preserve empty fields, colons, or boolean types. Notes stores each complete document as URI-encoded JSON in the existing `content` field and decodes it on load. This also allows legacy records to migrate on their next edit without requiring a phone or SDK update. Browser drafts remain plain note objects and pending edits take precedence over server data.
-
-Run `node --test tests/sync.test.mjs` to check the SDK write/read lifecycle, legacy migration, and browser draft recovery without building a ZIP.
 
 ## Limitations
 

@@ -7,9 +7,7 @@
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
-    "package": "npm run build && node scripts/package.mjs",
-    "test": "node --test tests/*.test.mjs",
-    "check:download": "node scripts/check-download.mjs"
+    "package": "npm run build && node scripts/package.mjs"
   },
   "dependencies": {
     "@fontsource/roboto-mono": "5.3.0",
@@ -18,8 +16,5 @@
   },
   "engines": {
     "node": ">=22"
-  },
-  "devDependencies": {
-    "jszip": "3.10.1"
   }
 }
