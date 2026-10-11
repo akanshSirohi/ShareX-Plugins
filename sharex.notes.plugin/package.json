@@ -1,0 +1,20 @@
+{
+  "name": "sharex-notes-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ShareX Notes Markdown editor plugin",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "dependencies": {
+    "@fontsource/roboto-mono": "5.3.0",
+    "pdfmake": "0.2.23",
+    "sharex-sdk": "1.2.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
