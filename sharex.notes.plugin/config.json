@@ -1,0 +1,8 @@
+{
+  "name": "ShareX Notes",
+  "package": "sharex.notes.plugin",
+  "description": "A beautiful offline-friendly Markdown notebook with search, tags, and ShareX synced storage.",
+  "author": "Akansh Sirohi",
+  "version": "1.0.0",
+  "versionCode": 1
+}
